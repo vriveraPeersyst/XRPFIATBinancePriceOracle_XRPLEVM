@@ -75,9 +75,8 @@ async function updatePriceOnBlockchain() {
     }
 }
 
-// Set up a cron job to run every minute
-cron.schedule('* * * * *', () => {
-    updatePriceOnBlockchain();
-});
+
+
+updatePriceOnBlockchain();
 
 console.log('Price Oracle is running and will update every minute.');
