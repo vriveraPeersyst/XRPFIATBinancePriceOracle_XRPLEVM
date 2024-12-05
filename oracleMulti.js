@@ -81,7 +81,9 @@ async function pushDataToContract(fixedPrices, timestamps) {
     const contract = new ethers.Contract(contractAddress, contractAbi, wallet);
 
     try {
-        const tx = await contract.updatePrices(fixedPrices, timestamps);
+        const gasPrice = ethers.parseUnits('1100', 'gwei'); // Example lower gas price
+        const tx = await contract.updatePrices(fixedPrices, timestamps, { gasPrice });
+
         console.log(`Transaction hash: ${tx.hash}`);
         await tx.wait();
         console.log('Prices and timestamps updated on the blockchain');
